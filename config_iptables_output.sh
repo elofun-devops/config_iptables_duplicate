@@ -17,7 +17,7 @@ do
   b=$(cat line-output.txt | sed -E 's/^[0-9]+ //' | grep -c -- "${a}")
   if [ ${b} -gt 1 ]; then
     # change regex find rule
-    position+=("$(echo "${line}" | grep -oP '(.*[0-9.]+\/32.*1105.*)' | grep -E -- '-A.*' | awk '{print $1}')")
+    position+=("$(echo "${line}" | grep -E -- '-A.*' | awk '{print $1}')")
     let count+=1
   fi
 done < line-output.txt
